@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Telugu OTT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 5;
+  background: #141414;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+header {
+  padding: 15px 40px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #e50914;
+}
+
+/* MOVIE ROW */
+.row {
+  padding: 20px 40px;
+}
+
+.row h2 {
+  margin-bottom: 15px;
+}
+
+/* 🔥 VERTICAL SCROLL GRID */
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+
+  max-height: 500px;   /* height for vertical scroll */
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scrollbar style */
+.movies::-webkit-scrollbar {
+  width: 6px;
+}
+.movies::-webkit-scrollbar-thumb {
+  background: #e50914;
+  border-radius: 10px;
+}
+
+.movies img {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.movies img:hover {
+  transform: scale(1.08);
+}
+
+/* PLAYER */
+#playerModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.player-box {
+  width: 85%;
+  max-width: 900px;
+}
+
+video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  text-align: right;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>Movie Mela</header>
+<p> Endless Entertainment</p>
+
+<div class="row">
+  <h2> Popular Telugu Movies</h2>
+
+  <div class="movies">
+
+    <!-- RRR -->
+    <img src="https://upload.wikimedia.org/wikipedia/en/d/d7/RRR_Poster.jpg"
+         onclick="playMovie('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4')">
+
+    <!-- Baahubali -->
+    <img src="https://upload.wikimedia.org/wikipedia/en/5/5f/Baahubali_The_Beginning_poster.jpg"
+         onclick="playMovie('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4')">
+
+    <!-- Pushpa -->
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/75/Pushpa_-_The_Rise_%282021_film%29.jpg"
+         onclick="playMovie('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4')">
+
+    <!-- Salaar (LOCAL IMAGE PATH) -->
+    <img src="C:\Users\HP\OneDrive\Desktop\full stack web develpoment\home.html\images\saalar.jpg"
+         onclick="playMovie('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4')">
+     <!-----kushi-->
+    <img src="C:\Users\HP\OneDrive\Desktop\full stack web develpoment\home.html\images\kushi.jpg"
+     onclick="playMovie('https://www.w3schools.com/html/movie.mp4')">
+     <!-----leo-->
+      <img src="home.html/images/leo.jpg"
+      onclick="playMovie('https://www.w3schools.com/html/mov_bbb.mp4')">
+      <!---og-->
+       <img src="home.html/images/og.jpg"
+       onclick="playMovie('https://www.w3schools.com/html/movie.mp4')">
+       <!----karthikeya-->
+       <img src="home.html/images/kar.jpg"
+       onclick="playMovie('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4')">
+       <!-----hello-->
+       <img src="home.html/images/hello.jpg"
+       onclick =" playMovie('https://archive.org/download/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4')" type="video/mp4">
+      <!----jersey-->
+      <img src="home.html/images/jewrsey.jpg"
+      onclick="playMovie('https://www.w3schools.com/html/movie.mp4')">
+      <!----ishq-->
+      <img src="home.html/images/ishq.jpg"
+      onclick="playMovie('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4')">
+      <!----single-->
+      <img src="home.html/images/single.jpg"
+       onclick="playMovie('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4')">
+  </div>
+</div>
+
+<!-- PLAYER MODAL -->
+<div id="playerModal">
+  <div class="player-box">
+    <div class="close-btn" onclick="closePlayer()">❌ Close</div>
+    <video id="videoPlayer" controls autoplay></video>
+  </div>
+</div>
+
+<script>
+function playMovie(videoUrl) {
+  const modal = document.getElementById("playerModal");
+  const player = document.getElementById("videoPlayer");
+
+  player.src = videoUrl;
+  modal.style.display = "flex";
+  player.play();
+}
+
+function closePlayer() {
+  const modal = document.getElementById("playerModal");
+  const player = document.getElementById("videoPlayer");
+
+  player.pause();
+  player.src = "";
+  modal.style.display = "none";
+}
+</script>
+</body>
+</html>
